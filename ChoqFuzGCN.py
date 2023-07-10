@@ -381,34 +381,7 @@ X3 = preprocessing.scale(X3)
 array1 = df3.values
 y3 = array1[:,-1]
 
-"""
-EDGE_Connection2 = pd.read_csv(
-  
-      "/DATA/susmita_2121cs34/susmita/GRAPH based work/6modBreastCancer/edges/cln0.9_edges.cites",# collected from TCGA
-    sep="\t",  # tab-separated    
-    header=None,  # no heading row
-    names=["target", "source"],  # set our own names for the columns
-)
 
-
-
-DATASET_content2 = pd.read_csv('/DATA/susmita/GRAPH based work/6modBreastCancer/data/file_cln.csv',header = None) 
-# DATASET_content2.drop(columns=DATASET_content2.columns[-1],  axis=1,  inplace=True)
-
-
-DATASET_content2.rename(columns={ DATASET_content2.columns[0]: "id" }, inplace = True)
-DATASET_content2.rename(columns={ DATASET_content2.columns[-1]: "labels" }, inplace = True)
-#DATASET_content
-DATASET_str_labels2 = DATASET_content2.set_index("id")
-DATASET_no_labels2 = DATASET_str_labels2.drop(columns="labels")
-
-#print("shape is",DATASET_no_labels)
-
-TCGA_no_labels2 = StellarGraph({"paper": DATASET_no_labels2}, {"cites": EDGE_Connection2})
-G2=TCGA_no_labels2
-node_label2 = DATASET_str_labels2["labels"]
-
-"""
 #=========================================================================================================
 
 
@@ -472,24 +445,7 @@ for itr in range (0,1):
             
             str1="GSE" 
             train_embd2, test_embd2=StellerGraphConvolution(train_LABELMain, train_LABEL,test_LABEL,val_LABEL,G1,node_label,str1,2,i)
-          """  
-          #   for CLN=====
-            #str1="CLN" 
-            #train_embd3, test_embd3=StellerGraphConvolution(train_LABELMain, train_LABEL,test_LABEL,val_LABEL,G2,node_label,str1,3,i)
-
-            # print("train_embd1",train_embd1.shape,"\ntest_embd1",test_embd1.shape,"\ntrain_embd2", train_embd2.shape)
-            # print("\n test_embd2",test_embd2.shape,"\nX3_train",X3_train.shape,"\nX3_test", X3_test.shape)
-            # print("\ny3_train",y3_train.shape,"\n y3_test ", y3_test.shape )
-
-            # break
-
-            # model_predictions1=majority_Voting (train_embd1, test_embd1, train_embd2, test_embd2,X3_train, X3_test,y3_train, y3_test )
-          
-            # for majority voting========
-            ########################################
-            # y_pred1=model_predictions1
-            ########################################
-          """
+         
             # call Choquet Ensemble==============================
             
             X_train=np.concatenate((train_embd1,train_embd2,X3_train), axis=1)
@@ -568,33 +524,7 @@ for itr in range (0,1):
 
       print("Average acc, avgMcc , avg precision , AVG_SENSITIVITY, AVG_SPECIFICITY, avgBalAcc, avg f1 score ")  
       print(avg_acc,",",avgMcc,",",AVG_PRECISION,",",AVG_SENSITIVITY,",",AVG_SPECIFICITY,",",avgBalAcc,",", avg_f1)  
-      """
-      #print("\n",average accuracy,",\t",AVG_BASE_AUC,",")    
-      #print(" avg acc ",AVG_SAE_ACC,",\n avg auc",AVG_SAE_AUC)  
-      # Acc Mcc Pre Sn Sp Bal_Acc F1-measure
-      # print("\n Average acc ,",avg_acc,"\n avgMcc ,",avgMcc)
-      # print("avg precision ,",AVG_PRECISION)
-      # print("AVG_SENSITIVITY ," ,AVG_SENSITIVITY)
-      # print("AVG_SPECIFICITY ," ,AVG_SPECIFICITY)
-      # print("avgBalAcc ,",avgBalAcc,"\n avg f1 score ,", avg_f1)
-      if(i==1):
-        print("Average acc, avgMcc , avg precision , AVG_SENSITIVITY, AVG_SPECIFICITY, avgBalAcc, avg f1 score ")
-        file2.writelines("acc, Mcc , pre , SEN, SPE, Bal,  f1  \n")
-      i=i+1  
-      print(avg_acc,",",avgMcc,",",AVG_PRECISION,",",AVG_SENSITIVITY,",",AVG_SPECIFICITY,",",avgBalAcc,",", avg_f1)
-      L=[str(avg_acc),",",str(avgMcc),",",str(AVG_PRECISION),",",str(AVG_SENSITIVITY),",",str(AVG_SPECIFICITY),",",str(avgBalAcc),",",str(avg_f1)]
-      file2.writelines(L)
-      file2.writelines("\n")
-      """
-      """      
-      ACC_=ACC_+avg_acc
-      MCC_=MCC_+avgMcc
-      PRE_=PRE_+AVG_PRECISION
-      SEN_=SEN_+AVG_SENSITIVITY
-      SPE_=SPE_+AVG_SPECIFICITY
-      BALN=BALN+avgBalAcc
-      F1_=F1_+avg_f1
-      """
+     
 
 file2.close()
 file3.close()
