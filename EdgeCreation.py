@@ -32,7 +32,7 @@ with open('cnv_edges.cites', 'w') as f:
       corr, _ = pearsonr(X1[i],X1[j])
       print(" ",i," ",j,": ",corr)
       #if(corr>=0.4 or corr<=-0.4):
-      if(corr>=0.998):
+      if(corr>=0.3): 
         count=count+1
         f.write(str(i+1))
         f.write('\t')
