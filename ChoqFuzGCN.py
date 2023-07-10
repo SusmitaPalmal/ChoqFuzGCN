@@ -11,7 +11,7 @@ try:
     sg.utils.validate_notebook_version("1.0.0rc1")
 except AttributeError:
     raise ValueError(
-        f"This notebook requires StellarGraph version 1.0.0rc1, but a different version {sg.__version__} is installed.  Please see <https://github.com/stellargraph/stellargraph/issues/1172>."
+        f"This notebook requires StellarGraph version 1.0.0rc1, but a different version {sg.__version__} is installed.  "
     ) from None
 
 
