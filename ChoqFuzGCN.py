@@ -331,7 +331,7 @@ DATASET_str_labels = DATASET_content.set_index("id")
 DATASET_no_labels = DATASET_str_labels.drop(columns="labels")
 
 #print("shape is",DATASET_no_labels)
-TCGA_no_labels = StellarGraph({"paper": DATASET_no_labels}, {"cites": EDGE_Connection})
+TCGA_no_labels = StellarGraph({"instance": DATASET_no_labels}, {"cites": EDGE_Connection})
 G=TCGA_no_labels
 node_label = DATASET_str_labels["labels"]
 
@@ -366,7 +366,7 @@ DATASET_no_labels1 = DATASET_str_labels1.drop(columns="labels")
 
 #print("shape is",DATASET_no_labels)
 
-TCGA_no_labels1 = StellarGraph({"paper": DATASET_no_labels1}, {"cites": EDGE_Connection1})
+TCGA_no_labels1 = StellarGraph({"instance": DATASET_no_labels1}, {"cites": EDGE_Connection1})
 G1=TCGA_no_labels1
 node_label1 = DATASET_str_labels1["labels"]
 
