@@ -88,7 +88,7 @@ def ensemble_model(X_train,y_train,X_test, y_test):
     # calculate prediction probability
     y_pred1_prob=cla1.predict_proba(X_test)[:, 1] 
     y_pred2_prob=cla2.predict_proba(X_test)[:, 1]   
-    y_pred6_prob=cla6.decision_function(X_test)
+    y_pred6_prob=cla3.decision_function(X_test)
     
 
     # accuracy evaluation for each classifier based on test set      
